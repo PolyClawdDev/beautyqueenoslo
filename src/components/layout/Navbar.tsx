@@ -47,20 +47,31 @@ export function Navbar() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="flex items-center justify-between h-28">
+          <div className="flex items-center justify-between h-16 sm:h-20 lg:h-28">
             {/* Logo */}
             <motion.button
               onClick={() => handleNavClick("#hjem")}
               whileHover={{ scale: 1.04 }}
               className="flex-shrink-0"
             >
+              {/* Mobile logo */}
+              <Image
+                src={scrolled ? "/BANNER.png" : "/LOGO1.png"}
+                alt="Beauty Queen Oslo"
+                width={70}
+                height={70}
+                style={{ width: 70, height: 70 }}
+                className="object-contain transition-opacity duration-300 block lg:hidden"
+                priority
+              />
+              {/* Desktop logo */}
               <Image
                 src={scrolled ? "/BANNER.png" : "/LOGO1.png"}
                 alt="Beauty Queen Oslo"
                 width={180}
                 height={180}
                 style={{ width: 180, height: 180 }}
-                className="object-contain transition-opacity duration-300"
+                className="object-contain transition-opacity duration-300 hidden lg:block"
                 priority
               />
             </motion.button>
@@ -203,29 +214,30 @@ export function Navbar() {
         )}
       </AnimatePresence>
 
-      {/* Floating Mobile CTA */}
-      <motion.div
-        initial={{ y: 100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 1.5, duration: 0.6 }}
-        className="fixed bottom-0 left-0 right-0 z-30 md:hidden pb-safe"
-        style={{ paddingBottom: "env(safe-area-inset-bottom, 0px)" }}
+      {/* Floating Mobile CTA — plain div, no Framer Motion to prevent scroll jitter */}
+      <div
+        className="fixed bottom-0 left-0 right-0 z-30 md:hidden"
+        style={{
+          paddingBottom: "env(safe-area-inset-bottom, 0px)",
+          transform: "translateZ(0)",   /* force GPU layer — stops iOS jitter */
+          willChange: "transform",
+        }}
       >
-        <div className="bg-white/95 backdrop-blur-xl border-t border-[#E8D9D2] px-5 pt-3 pb-4 flex gap-3">
+        <div className="bg-white border-t border-[#E8D9D2] px-5 pt-3 pb-4 flex gap-3">
           <button
             onClick={() => handleNavClick("#booking")}
-            className="flex-1 bg-[#B76E79] text-white font-sans font-medium text-xs tracking-[0.2em] uppercase py-4 min-h-[52px] rounded-sm shadow-lg shadow-[#B76E79]/25 hover:bg-[#9B5560] transition-colors touch-manipulation"
+            className="flex-1 bg-[#B76E79] text-white font-sans font-medium text-xs tracking-[0.2em] uppercase py-4 min-h-[52px] transition-colors touch-manipulation active:bg-[#9B5560]"
           >
             Book Nå
           </button>
           <a
             href="tel:+4794447080"
-            className="flex items-center justify-center gap-1.5 border border-[#E8D9D2] bg-white text-[#0B0B0D] font-sans font-medium text-xs tracking-[0.15em] uppercase px-5 min-h-[52px] hover:border-[#B76E79] hover:text-[#B76E79] transition-colors touch-manipulation"
+            className="flex items-center justify-center border border-[#E8D9D2] bg-white text-[#0B0B0D] font-sans font-medium text-xs tracking-[0.15em] uppercase px-5 min-h-[52px] transition-colors touch-manipulation active:border-[#B76E79] active:text-[#B76E79]"
           >
             Ring
           </a>
         </div>
-      </motion.div>
+      </div>
     </>
   );
 }
