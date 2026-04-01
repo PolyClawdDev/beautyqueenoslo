@@ -58,9 +58,9 @@ export function Navbar() {
               <Image
                 src={scrolled ? "/BANNER.png" : "/LOGO1.png"}
                 alt="Beauty Queen Oslo"
-                width={56}
-                height={56}
-                style={{ width: 56, height: 56 }}
+                width={80}
+                height={80}
+                style={{ width: 80, height: 80 }}
                 className="object-contain transition-opacity duration-300 block lg:hidden"
                 priority
               />
