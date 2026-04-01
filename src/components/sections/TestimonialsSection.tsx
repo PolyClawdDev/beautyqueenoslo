@@ -114,7 +114,7 @@ export function TestimonialsSection() {
             <div className="flex flex-col">
               <div className="flex items-center gap-1.5">
                 {[1,2,3,4,5].map(i => (
-                  <Star key={i} className="w-4 h-4 text-[#C9A27E] fill-[#C9A27E]" />
+                  <Star key={i} className="w-4 h-4 text-[#F5B800] fill-[#F5B800]" />
                 ))}
                 <span className="font-serif text-xl text-[#0B0B0D] ml-1">5,0</span>
               </div>
@@ -166,7 +166,7 @@ export function TestimonialsSection() {
                   {/* Stars + source */}
                   <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-3">
                     <div className="flex gap-0.5">
-                      {[1,2,3,4,5].map(i => <Star key={i} className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#C9A27E] fill-[#C9A27E]" />)}
+                      {[1,2,3,4,5].map(i => <Star key={i} className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#F5B800] fill-[#F5B800]" />)}
                     </div>
                     <div className="flex items-center gap-1.5 bg-[#FAF6F2] border border-[#E8D9D2] rounded-full px-2.5 py-1">
                       <GoogleIcon />
@@ -304,7 +304,7 @@ export function TestimonialsSection() {
                 </div>
                 <div className="flex gap-0.5 mb-1.5">
                   {[1,2,3,4,5].map(i => (
-                    <Star key={i} className="w-2.5 h-2.5 text-[#C9A27E] fill-[#C9A27E]" />
+                    <Star key={i} className="w-2.5 h-2.5 text-[#F5B800] fill-[#F5B800]" />
                   ))}
                 </div>
                 <p className="text-[#666] text-[11px] leading-relaxed line-clamp-2">
