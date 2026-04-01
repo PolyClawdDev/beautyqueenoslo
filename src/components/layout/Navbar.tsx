@@ -47,7 +47,7 @@ export function Navbar() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="flex items-center justify-between h-12 sm:h-14 lg:h-28">
+          <div className="flex items-center justify-between h-16 sm:h-16 lg:h-28">
             {/* Logo */}
             <motion.button
               onClick={() => handleNavClick("#hjem")}
@@ -58,9 +58,9 @@ export function Navbar() {
               <Image
                 src={scrolled ? "/BANNER.png" : "/LOGO1.png"}
                 alt="Beauty Queen Oslo"
-                width={40}
-                height={40}
-                style={{ width: 40, height: 40 }}
+                width={56}
+                height={56}
+                style={{ width: 56, height: 56 }}
                 className="object-contain transition-opacity duration-300 block lg:hidden"
                 priority
               />
