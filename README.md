@@ -1,36 +1,121 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Beauty Queen Oslo – Luxury Salon Website
+
+A premium, award-winning salon website built with Next.js App Router, Tailwind CSS, and Framer Motion.
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run dev    # Start development server at http://localhost:3000
+npm run build  # Build for production
+npm start      # Start production server
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Image Management
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+All images are stored in `/public/` and referenced by simple file names. To swap images, just replace the file with the same name.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Image Reference Map
 
-## Learn More
+| File Name | Where Used | Recommended Dimensions |
+|-----------|-----------|----------------------|
+| `/hero-1.jpg` | Hero slideshow (slide 1) | 1920×1080px |
+| `/hero-2.jpg` | Hero slideshow (slide 2) | 1920×1080px |
+| `/salon-1.jpg` | Hero slideshow, About section | 1920×1080px |
+| `/nails-1.jpg` | Services card, Gallery | 800×1000px |
+| `/nails-2.jpg` | Gallery | 800×1000px |
+| `/brows-1.jpg` | Services card, About, Gallery | 800×1000px |
+| `/lashes-1.jpg` | Services card, Gallery | 800×1000px |
+| `/training-1.jpg` | Training section | 1200×800px |
+| `/gallery-1.jpg` | Gallery grid | 800×800px |
+| `/gallery-2.jpg` | Gallery grid | 800×800px |
+| `/gallery-3.jpg` | Gallery grid | 800×800px |
+| `/gallery-4.jpg` | Gallery grid | 800×800px |
+| `/gallery-5.jpg` | Gallery grid | 800×800px |
+| `/gallery-6.jpg` | Gallery grid, Instagram strip | 800×800px |
 
-To learn more about Next.js, take a look at the following resources:
+### Tips
+- Use high-quality images (at least 72dpi, preferably 150dpi+)
+- Portrait orientation works best for service and gallery cards
+- Landscape works best for hero images
+- PNG or JPG format both work
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Project Structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+src/
+├── app/
+│   ├── globals.css          # Global styles and theme tokens
+│   ├── layout.tsx           # Root layout with fonts and SEO
+│   └── page.tsx             # Main page composition
+├── components/
+│   ├── booking/
+│   │   └── BookingWizard.tsx    # 6-step booking wizard
+│   ├── layout/
+│   │   ├── Navbar.tsx           # Sticky navigation
+│   │   └── Footer.tsx           # Footer with newsletter
+│   ├── sections/
+│   │   ├── HeroSection.tsx      # Full-screen hero with slideshow
+│   │   ├── ServicesSection.tsx  # Service cards with expandable details
+│   │   ├── GallerySection.tsx   # Masonry gallery with lightbox
+│   │   ├── CredentialsSection.tsx  # Awards and achievements
+│   │   ├── BookingSection.tsx   # Booking wizard container
+│   │   ├── PricingSection.tsx   # Tabbed pricing
+│   │   ├── AboutSection.tsx     # About with editorial layout
+│   │   ├── TestimonialsSection.tsx  # Animated testimonials
+│   │   ├── TrainingSection.tsx  # Course cards
+│   │   ├── InstagramSection.tsx # Social proof strip
+│   │   └── ContactSection.tsx   # Contact form and info
+│   └── ui/
+│       ├── Button.tsx           # Reusable button variants
+│       ├── SectionLabel.tsx     # Section label with gold lines
+│       └── Icons.tsx            # Custom SVG icons
+└── lib/
+    ├── utils.ts                 # Utility functions
+    └── data/
+        ├── services.ts          # Services and sub-services
+        ├── gallery.ts           # Gallery image data
+        ├── pricing.ts           # Pricing categories
+        ├── testimonials.ts      # Client reviews
+        └── booking.ts           # Booking mock data
+```
 
-## Deploy on Vercel
+## Connecting a Backend
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The booking wizard is structured for easy backend integration:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Supabase
+Add these environment variables and connect in `/src/lib/data/booking.ts`:
+```env
+NEXT_PUBLIC_SUPABASE_URL=your_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_key
+```
+
+### Email Notifications
+Set up with Resend or SendGrid in a `/app/api/booking` route.
+
+### Stripe Payments
+Add Stripe to handle deposits and full payments via the booking wizard payment step.
+
+## Customization
+
+### Colors
+Edit CSS variables in `src/app/globals.css` under `@theme`.
+
+### Services / Pricing
+Edit mock data files in `src/lib/data/`.
+
+### Copy / Text
+All Norwegian text is inline in each section component. Search for strings to update.
+
+### SEO
+Update metadata in `src/app/layout.tsx`.
+
+## Tech Stack
+
+- **Next.js 16** (App Router)
+- **React 19**
+- **Tailwind CSS v4**
+- **Framer Motion v12**
+- **Lucide Icons**
+- **React Day Picker** (calendar)
+- **date-fns** (date utilities)
