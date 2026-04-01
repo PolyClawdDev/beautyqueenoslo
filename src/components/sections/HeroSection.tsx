@@ -55,15 +55,18 @@ export function HeroSection() {
 
       <video
         ref={videoRef}
-        src="/BACKROUND.mov"
         autoPlay
         muted
         loop
         playsInline
+        preload="auto"
         className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-[1200ms] ${
           videoReady ? "opacity-100" : "opacity-0"
         }`}
-      />
+      >
+        <source src="/background.webm" type="video/webm" />
+        <source src="/background.mp4" type="video/mp4" />
+      </video>
 
       {/* OVERLAYS */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/20 to-black/80 z-10" />
