@@ -71,7 +71,7 @@ export function HeroSection() {
 
       {/* CONTENT */}
       <div className="relative z-20 h-full flex flex-col">
-        <div className="flex-1 flex flex-col justify-center px-5 sm:px-8 lg:px-12 xl:px-20 max-w-7xl mx-auto w-full pt-20 sm:pt-24 lg:pt-36">
+        <div className="flex-1 flex flex-col justify-center px-5 sm:px-8 lg:px-12 xl:px-20 max-w-7xl mx-auto w-full pt-14 sm:pt-16 lg:pt-36">
 
           {/* Award badge */}
           <motion.div
